@@ -1,0 +1,3 @@
+/home/ahmed/Boids-sdl2/cmake-build-debug/CMakeFiles/Boids_sdl2.dir
+/home/ahmed/Boids-sdl2/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/ahmed/Boids-sdl2/cmake-build-debug/CMakeFiles/rebuild_cache.dir

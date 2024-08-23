@@ -1,0 +1,12 @@
+# ninja log v6
+2	636	1724424958055874028	CMakeFiles/Boids_sdl2.dir/src/init.cpp.o	fddb7b4c844effe0
+1	19	1724439043131429244	build.ninja	3017fd5ebea2bef5
+2	864	1724353920635843500	CMakeFiles/Boids_sdl2.dir/main.cpp.o	873f6368d375712e
+2	622	1724434166305516818	CMakeFiles/Boids_sdl2.dir/src/main.cpp.o	8f3069895470e16f
+2	882	1724426341741140282	CMakeFiles/Boids_sdl2.dir/src/GetMedia.cpp.o	3435b7a12c39d8d1
+623	698	1724434166926505980	Boids_sdl2	bbcfc9678f6d5551
+2	818	1724441579210567151	CMakeFiles/Boids_sdl2.dir/src/init.cpp.o	fddb7b4c844effe0
+2	1094	1724441579210567151	CMakeFiles/Boids_sdl2.dir/src/main.cpp.o	8f3069895470e16f
+3	1147	1724441579211567130	CMakeFiles/Boids_sdl2.dir/src/Renderer.cpp.o	30f03e488809beef
+2	971	1724441651773096636	CMakeFiles/Boids_sdl2.dir/src/main.cpp.o	8f3069895470e16f
+971	1054	1724441652742077079	Boids_sdl2	eb14c9c3a6af46c8
