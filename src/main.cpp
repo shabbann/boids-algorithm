@@ -1,11 +1,11 @@
-/*This source code copyrighted by Lazy Foo' Productions 2004-2024
-and may not be redistributed without written permission.*/
 
 //Using SDL and standard IO
 #include <SDL2/SDL.h>
 #include "iostream"
 #include "SDL2/SDL_image.h"
 #include "Renderer.hpp"
+#include "bird.hpp"
+
 
 
 
@@ -20,6 +20,9 @@ int main( int argc, char* args[] )
     RenderWindow window;
     window.RenderWallpaper();
     window.Display();
+    SDL_Texture *brdtri=window.Loadbrd("/home/ahmed/Boids-sdl2/assets/bird.png");
+    bird brd(200,200,brdtri);
+
    //game loob
    SDL_Event e;
    bool quit = false;
@@ -27,17 +30,22 @@ int main( int argc, char* args[] )
        while( SDL_PollEvent(&e ) ){
                     if(e.type == SDL_QUIT ) quit = true;
        }
-
-
+       window.RenderWallpaper();
+       window.Render(brd);
+       window.Display();
 
    }
 
 
     //Free resources and close SDL
 
-
     //Quit SDL subsystems
     SDL_Quit();
 
     return 0;
 }
+
+
+
+
+
