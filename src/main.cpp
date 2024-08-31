@@ -54,21 +54,17 @@ int main( int argc, char* argv[] )
        // Store the milliseconds of the current frame to be used in the next one
        last_frame_time = SDL_GetTicks();
 
-       window.clear();
-       window.RenderWallpaper();
-
-       UpdateRespectToAlignment(birds,GlobalDeltaTime);
-       UpdateRespectToCohesion(birds,GlobalDeltaTime);
-       UpdateRespectToSeparation(birds,GlobalDeltaTime);
-
-       for (int i = 0; i < BIRDSCOUNT; ++i) {
-           birds[i].move(GlobalDeltaTime);
-           window.Render(birds[i]);
-       }
-       window.Display();
-       if(GlobalDeltaTime<cycle_time){
-           SDL_Delay((cycle_time-GlobalDeltaTime)*1000);
-       }
+        if(cycle_time<=accumlated_time) {
+            accumlated_time-=cycle_time;
+            window.clear();
+            window.RenderWallpaper();
+            update(GlobalDeltaTime, birds);
+            for (int i = 0; i < BIRDSCOUNT; ++i) {
+                birds[i].move(cycle_time);
+                window.Render(birds[i]);
+            }
+            window.Display();
+        }
    }
 
 

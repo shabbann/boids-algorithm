@@ -1,12 +1,20 @@
 #pragma once
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
+#define MAXSPEED 60
+#define MAXACC 1
 
 struct v2f{
     float y=0;
     float x = 0;
 
      v2f(float x,float y);
+     v2f operator+(v2f sec);
+     v2f operator-(v2f sec);
+     float Getmag();
+     void SetMag(float newV);
+     float GETnorm();
+     v2f operator*(float sec);
 
 };
 class bird{
@@ -20,11 +28,11 @@ public:
     v2f postion;
     SDL_Rect dim;
     v2f Velocity;
-    void Setxdir(float x);
-    void Setydir(float y);
+    void Setspeed(v2f NewV);
     void move(float dt);
 private:
     SDL_Texture * TEX;
+
 
 
 
