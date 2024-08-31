@@ -10,11 +10,12 @@ public:
     void Display();
     void Render(bird brd);
     SDL_Texture * Loadbrd(std::string path);
-
+    void clear();
+    SDL_Renderer* renderer;
 private:
     std::string title = "BOIDS";
     SDL_Window* window;
-    SDL_Renderer* renderer;
+
     SDL_Texture* WallPaper;
     SDL_Texture *LoadTexture(std::string path);
 

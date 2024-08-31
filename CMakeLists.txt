@@ -7,6 +7,7 @@ find_package(SDL2_image REQUIRED)
 set(MY_SOURCE_FILES src/main.cpp
         src/Renderer.cpp
         src/bird.cpp
+        src/BoidsAlgorithm.cpp
 )
 set(SDL2 /usr/include/SDL2)
 add_executable(Boids_sdl2 ${MY_SOURCE_FILES})

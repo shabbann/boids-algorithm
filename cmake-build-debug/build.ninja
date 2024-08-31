@@ -70,6 +70,13 @@ build CMakeFiles/Boids_sdl2.dir/src/bird.cpp.o: CXX_COMPILER__Boids_sdl2_unscann
   OBJECT_DIR = CMakeFiles/Boids_sdl2.dir
   OBJECT_FILE_DIR = CMakeFiles/Boids_sdl2.dir/src
 
+build CMakeFiles/Boids_sdl2.dir/src/BoidsAlgorithm.cpp.o: CXX_COMPILER__Boids_sdl2_unscanned_Debug /home/ahmed/Boids-sdl2/src/BoidsAlgorithm.cpp || cmake_object_order_depends_target_Boids_sdl2
+  DEP_FILE = CMakeFiles/Boids_sdl2.dir/src/BoidsAlgorithm.cpp.o.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  INCLUDES = -I/home/ahmed/Boids-sdl2/include -isystem /usr/include/SDL2
+  OBJECT_DIR = CMakeFiles/Boids_sdl2.dir
+  OBJECT_FILE_DIR = CMakeFiles/Boids_sdl2.dir/src
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Boids_sdl2
@@ -78,7 +85,7 @@ build CMakeFiles/Boids_sdl2.dir/src/bird.cpp.o: CXX_COMPILER__Boids_sdl2_unscann
 #############################################
 # Link the executable Boids_sdl2
 
-build Boids_sdl2: CXX_EXECUTABLE_LINKER__Boids_sdl2_Debug CMakeFiles/Boids_sdl2.dir/src/main.cpp.o CMakeFiles/Boids_sdl2.dir/src/Renderer.cpp.o CMakeFiles/Boids_sdl2.dir/src/bird.cpp.o | /usr/lib/x86_64-linux-gnu/libSDL2.so /usr/lib/x86_64-linux-gnu/libSDL2_image.so
+build Boids_sdl2: CXX_EXECUTABLE_LINKER__Boids_sdl2_Debug CMakeFiles/Boids_sdl2.dir/src/main.cpp.o CMakeFiles/Boids_sdl2.dir/src/Renderer.cpp.o CMakeFiles/Boids_sdl2.dir/src/bird.cpp.o CMakeFiles/Boids_sdl2.dir/src/BoidsAlgorithm.cpp.o | /usr/lib/x86_64-linux-gnu/libSDL2.so /usr/lib/x86_64-linux-gnu/libSDL2_image.so
   FLAGS = -g
   LINK_LIBRARIES = /usr/lib/x86_64-linux-gnu/libSDL2.so  /usr/lib/x86_64-linux-gnu/libSDL2_image.so
   OBJECT_DIR = CMakeFiles/Boids_sdl2.dir
