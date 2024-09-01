@@ -1,0 +1,1 @@
+//TODO gui for parameter mag (sep,ali,coh) changing

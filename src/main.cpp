@@ -1,20 +1,15 @@
 
 //Using SDL and standard IO
 #include <SDL2/SDL.h>
-#include "iostream"
+#include <iostream>
 #include "SDL2/SDL_image.h"
 #include "Renderer.hpp"
 #include "bird.hpp"
 #include <stdint.h>
-#include "vector"
+#include <vector>
 #include "BoidsAlgorithm.hpp"
 #include <cstdlib>
-#define FPS 144
-
-
-
-
-
+#include "const.hpp"
 
 int main( int argc, char* argv[] )
 {
@@ -41,18 +36,16 @@ int main( int argc, char* argv[] )
     ///////////////////////////////////////
     // game loob
     ///////////////////////////////////////
-   SDL_Event e;
-   bool quit = false;
-   while(!quit){
-       accumlated_time+=GlobalDeltaTime;
-
-
+      SDL_Event e;
+      bool quit = false;
+      while(!quit){
        while( SDL_PollEvent(&e ) ){
                     if(e.type == SDL_QUIT ) quit = true;
        }
+       //TODO make better delta time and fixed frame rate
+        accumlated_time+=GlobalDeltaTime;
         GlobalDeltaTime = (SDL_GetTicks() - last_frame_time) / 1000.0;
-       // Store the milliseconds of the current frame to be used in the next one
-       last_frame_time = SDL_GetTicks();
+        last_frame_time = SDL_GetTicks();
 
         if(cycle_time<=accumlated_time) {
             accumlated_time-=cycle_time;

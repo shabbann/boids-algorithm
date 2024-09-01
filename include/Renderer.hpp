@@ -2,6 +2,7 @@
 #include <SDL2/SDL.h>
 #include "string"
 #include "bird.hpp"
+#include "const.hpp"
 class RenderWindow{
 public:
     RenderWindow();

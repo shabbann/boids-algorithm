@@ -1,4 +1,5 @@
-#define BIRDSCOUNT 100
+#pragma once
+#include "const.hpp"
 void update(float dt,std::vector<bird>& birds);
 v2f Separation(std::vector<bird>& birds ,const bird& curr);
 v2f Alignment(std::vector<bird>& birds ,const bird& curr);

@@ -1,9 +1,8 @@
 #include "vector"
-#include "iostream"
-#include "Renderer.hpp"
 #include "bird.hpp"
 #include "BoidsAlgorithm.hpp"
 #include "math.h"
+
 float Getdis(bird b1,bird b2){
     return sqrt(pow((b1.postion.x-b2.postion.x),2)+pow((b1.postion.y-b2.postion.y),2));
 };
@@ -35,7 +34,7 @@ v2f Separation(std::vector<bird>& birds ,const bird& curr){
                 REQDIR.y-= 1.f/(birds[j].postion.y-curr.postion.y);
             }
         }
-        REQDIR.SetMag(1);
+        REQDIR.SetMag(MAXSPEED*3);
 
         return REQDIR;
 
@@ -54,7 +53,7 @@ v2f Alignment(std::vector<bird>& birds,const bird& curr){
         if(bcount>0){
         Alivec.x/=float(bcount);Alivec.y/=float(bcount);}
         v2f REQDIR=Alivec-curr.Velocity;
-        REQDIR.SetMag(1);
+        REQDIR.SetMag(MAXSPEED*3);
         return REQDIR;
 
 }
@@ -66,7 +65,7 @@ v2f  Cohesion(std::vector<bird>& birds,const bird& curr){
         int bcount=0;
         for (int j = 0; j < BIRDSCOUNT; ++j) {
             if(&curr !=&birds[j] and Getdis(curr,birds[j])<=100){
-                CenterOfMass.x+=birds[j].postion.x+6;CenterOfMass.y+=birds[j].postion.y+32.f/2.f;
+                CenterOfMass.x+=birds[j].postion.x;CenterOfMass.y+=birds[j].postion.y;
                 bcount++;
             }
         }
@@ -74,7 +73,7 @@ v2f  Cohesion(std::vector<bird>& birds,const bird& curr){
         CenterOfMass.x/=(float)bcount;CenterOfMass.y/=(float)bcount;}
         v2f REQDIR(CenterOfMass.x-curr.postion.x,CenterOfMass.y-curr.postion.y);
         REQDIR=REQDIR-curr.Velocity;
-        REQDIR.SetMag(1);
+        REQDIR.SetMag(MAXSPEED*3);
 
         return REQDIR;
 
