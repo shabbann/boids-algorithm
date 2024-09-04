@@ -29,7 +29,7 @@ void v2f::SetMag(float newV) {
 }
 
 bird::bird( float p_x, float p_y,SDL_Texture * tex)
-: postion(p_x,p_y),TEX(tex), Velocity(-rand(),-rand())
+: postion(p_x,p_y),TEX(tex), Velocity(rand()%5-2,rand()%5-2)
 {
     dim={0,0,2236,2236};
 }

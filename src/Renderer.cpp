@@ -55,7 +55,7 @@ RenderWindow::~RenderWindow() {
 void RenderWindow::Render(bird brd) {
 
     SDL_SetRenderDrawColor( renderer, 0, 0, 139, SDL_ALPHA_OPAQUE );
-    SDL_Rect dst={int(brd.Getpostion().x),int(brd.Getpostion().y),12,32};
+    SDL_Rect dst={int(brd.Getpostion().x),int(brd.Getpostion().y),8,10};
 
     SDL_RenderCopyEx(renderer,brd.Gettex(),&brd.dim,&dst, atan2(brd.Velocity.y,brd.Velocity.x)*180/M_PI +90,NULL,SDL_FLIP_NONE);
 

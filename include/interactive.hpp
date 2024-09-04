@@ -1,1 +1,1 @@
-//TODO gui for parameter mag (sep,ali,coh) changing
+//TODO gui for parameter mag (sep,ali,coh,speed,acc) changing

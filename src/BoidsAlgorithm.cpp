@@ -6,7 +6,7 @@
 float Getdis(bird b1,bird b2){
     return sqrt(pow((b1.postion.x-b2.postion.x),2)+pow((b1.postion.y-b2.postion.y),2));
 };
-void update(float dt, std::vector<bird>& birds){
+void update(std::vector<bird>& birds){
 
     for (int i = 0; i < BIRDSCOUNT; ++i) {
         v2f accelration(0,0);
@@ -22,7 +22,7 @@ void update(float dt, std::vector<bird>& birds){
 
 
 
-
+//TODO Quadtree
 v2f Separation(std::vector<bird>& birds ,const bird& curr){
 
         v2f REQDIR(0,0);
