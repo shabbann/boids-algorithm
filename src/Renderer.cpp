@@ -13,7 +13,7 @@ RenderWindow::RenderWindow() : window(nullptr), renderer(nullptr)
         std::cout << "Window failed to init. Error: " << SDL_GetError() << std::endl;
     }
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED );
-    WallPaper= LoadTexture("/home/ahmed/Boids-sdl2/assets/wallpaper.png");
+    WallPaper= LoadTexture("assets/wallpaper.png");
 }
 
 SDL_Texture *RenderWindow::LoadTexture(std::string path) {
@@ -52,10 +52,10 @@ RenderWindow::~RenderWindow() {
 
 }
 
-void RenderWindow::Render(bird brd) {
+void RenderWindow::Render(bird brd,const SDL_Point& size) {
 
     SDL_SetRenderDrawColor( renderer, 0, 0, 139, SDL_ALPHA_OPAQUE );
-    SDL_Rect dst={int(brd.Getpostion().x),int(brd.Getpostion().y),8,10};
+    SDL_Rect dst={int(brd.Getpostion().x),int(brd.Getpostion().y),size.x,size.y};
 
     SDL_RenderCopyEx(renderer,brd.Gettex(),&brd.dim,&dst, atan2(brd.Velocity.y,brd.Velocity.x)*180/M_PI +90,NULL,SDL_FLIP_NONE);
 

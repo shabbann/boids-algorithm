@@ -7,12 +7,13 @@ struct v2f{
     float y=0;
     float x = 0;
      v2f(float x,float y);
-     v2f operator+(v2f sec);
-     v2f operator-(v2f sec);
-    v2f operator*(float sec);
-     void SetMag(float newV);
+     v2f operator+(const v2f& sec) const;
+     v2f operator-(const v2f& sec) const;
+    v2f operator*(const float& sec) const;
+     void SetMag(const float& newV);
 
 };
+
 class bird{
 public:
     bird(float p_x, float p_y, SDL_Texture * tex);
@@ -22,8 +23,8 @@ public:
     v2f postion;
     SDL_Rect dim;
     v2f Velocity;
-    void move(float dt);
-private:
+    void move(const float& dt);
+protected:
     SDL_Texture * TEX;
 
 

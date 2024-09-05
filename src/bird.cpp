@@ -7,21 +7,21 @@ v2f::v2f(float X, float Y)
 {
 }
 
-v2f v2f::operator+(v2f sec) {
+v2f v2f::operator+(const v2f& sec) const {
 
     return v2f(x+sec.x, y+sec.y);
 }
 
-v2f v2f::operator-(v2f sec) {
+v2f v2f::operator-(const v2f& sec) const {
 
     return v2f(x-sec.x, y-sec.y);
 }
-v2f v2f::operator*(float sec) {
+v2f v2f::operator*(const float& sec) const {
 
     return v2f(x*sec, y*sec);
 }
 
-void v2f::SetMag(float newV) {
+void v2f::SetMag(const float& newV) {
     float norm=sqrt(pow((x),2)+pow((y),2));
     if(norm!=0){
     x=x/norm;y=y/norm;
@@ -31,7 +31,10 @@ void v2f::SetMag(float newV) {
 bird::bird( float p_x, float p_y,SDL_Texture * tex)
 : postion(p_x,p_y),TEX(tex), Velocity(rand()%5-2,rand()%5-2)
 {
-    dim={0,0,2236,2236};
+    Velocity.SetMag(MAXSPEED);
+    SDL_Point size;
+    SDL_QueryTexture(tex, NULL, NULL, &size.x, &size.y);
+    dim={0,0,size.x,size.y};
 }
 
 v2f bird::Getpostion() {
@@ -45,7 +48,7 @@ SDL_Texture *bird::Gettex() {
 
 
 
-void bird::move(float dt) {
+void bird::move(const float& dt) {
     postion=postion+Velocity*dt;
     if(postion.x>1280){
         postion.x=0;
@@ -60,6 +63,4 @@ void bird::move(float dt) {
         postion.y=0;
     }
 }
-
-
 

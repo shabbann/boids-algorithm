@@ -9,7 +9,7 @@ public:
     ~RenderWindow();
     void RenderWallpaper();
     void Display();
-    void Render(bird brd);
+    void Render(bird brd,const SDL_Point& size);
     SDL_Texture * Loadbrd(std::string path);
     void clear();
     SDL_Renderer* renderer;

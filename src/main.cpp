@@ -10,7 +10,6 @@
 #include "BoidsAlgorithm.hpp"
 #include <cstdlib>
 #include "const.hpp"
-#include <algorithm>
 
 int main( int argc, char* argv[] )
 {
@@ -22,13 +21,19 @@ int main( int argc, char* argv[] )
         std::cout << "IMG_init has failed. Error: " << SDL_GetError() << std::endl;
 
     RenderWindow window;
-    std::vector<bird> birds;
-    SDL_Texture *brdtri=window.Loadbrd("/home/ahmed/Boids-sdl2/assets/bird.png");
+    std::vector<bird> birds;SDL_Point birdsize(4,5);
+    std::vector<bird> predators;SDL_Point PREDsize(6,9);
+    SDL_Texture *brdtri=window.Loadbrd("assets/bird.png");
     for (int i = 0; i < BIRDSCOUNT; ++i) {
         bird brd((rand())%1280,rand()%720,brdtri);
         birds.push_back(brd);
     }
-    float_t GlobalDeltaTime=0;
+    SDL_Texture *predtri=window.Loadbrd("assets/PRED.png");
+    for (int i = 0; i < PREDCOUNT; ++i) {
+        bird pred((rand())%1280,rand()%720,predtri);
+        predators.push_back(pred);
+    }
+    double GlobalDeltaTime=0;
     float_t accumulated_time =0.0f;
     constexpr float_t cycle_time=1.0f/FPS;
     uint32_t last_frame_time = 0;
@@ -44,22 +49,27 @@ int main( int argc, char* argv[] )
        //TODO make better delta time and fixed frame rate
         accumulated_time+=GlobalDeltaTime;
         GlobalDeltaTime = (SDL_GetTicks() - last_frame_time) / 1000.0;
+        //std::cout<<int(1.0f/GlobalDeltaTime)<<std::endl;
         last_frame_time = SDL_GetTicks();
         if(cycle_time < accumulated_time) {
             accumulated_time-=cycle_time;
-            window.clear();
-            window.RenderWallpaper();
-            update(birds);
-            for (int i = 0; i < BIRDSCOUNT; ++i) {
-                birds[i].move(cycle_time);
-                window.Render(birds[i]);
-            }
+            if(GlobalDeltaTime>cycle_time)
+                simulate(GlobalDeltaTime,birds,predators);
+            else
+                simulate(cycle_time,birds,predators);
 
         }
+          window.clear();
+          window.RenderWallpaper();
+          for (int i = 0; i < BIRDSCOUNT; ++i) {
+              window.Render(birds[i],birdsize);
+          }
+          for (int i = 0; i < PREDCOUNT; ++i) {
+              window.Render(predators[i],PREDsize);
+          }
           window.Display();
    }
     //Free resources and close SDL
-    //~RenderWindow()
     //Quit SDL subsystems
     SDL_Quit();
     return 0;
